@@ -7,19 +7,19 @@ import guru.springframework.sfgdi.services.ConstructorGreetingService;
 import guru.springframework.sfgdi.services.PrimaryGreetingService;
 import guru.springframework.sfgdi.services.SetterInjectedGreetingService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
+@EnableConfigurationProperties(ConstructorConfig.class)
 @Configuration
 public class GreetingServiceConfig {
 
     @Bean
-    FakeDataSource fakeDataSource(@Value("${segoy.username}") String username,
-                                  @Value("${segoy.password}") String password,
-                                  @Value(("${segoy.jdbcurl}")) String jdbcurl){
+    FakeDataSource fakeDataSource(ConstructorConfig constructorConfig){
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(username);
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setJdbcurl(jdbcurl);
+        fakeDataSource.setUsername(constructorConfig.getUsername());
+        fakeDataSource.setPassword(constructorConfig.getPassword());
+        fakeDataSource.setJdbcurl(constructorConfig.getJdbcurl());
 
         return fakeDataSource;
     }

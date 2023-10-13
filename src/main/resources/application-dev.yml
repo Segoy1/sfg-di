@@ -1,0 +1,4 @@
+segoy:
+  username: devuser
+  password: devpass
+  jdbcurl: devjdbc

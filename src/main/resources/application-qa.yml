@@ -1,0 +1,4 @@
+segoy:
+  username: qauser
+  password: qapass
+  jdbcurl: qajdbc

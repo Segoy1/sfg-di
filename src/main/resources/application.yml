@@ -3,7 +3,16 @@ spring:
     active:
       - cat
       - EN
+      - prod
 segoy:
   username: ymluser
   password: ymlpass
   jdbcurl: ymljdbc
+
+---
+spring:
+  profiles: prod
+segoy:
+  username: produser
+  password: prodpass
+  jdbcurl: prodjdbc
